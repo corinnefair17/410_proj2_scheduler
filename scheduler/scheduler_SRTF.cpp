@@ -12,7 +12,7 @@
 #include "../includes/scheduler_SRTF.h"
 
 	bool Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p) {
-		return false;
+		return Scheduler::time_to_switch_processes(tick_count, p);
 	}
 
 	void Scheduler_SRTF::sort() {

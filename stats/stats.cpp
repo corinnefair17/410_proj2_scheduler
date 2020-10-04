@@ -10,9 +10,7 @@
 
 	Stats::Stats(std::vector<PCB> &finished_vector):
 		vec(&finished_vector) {
-		av_response_time = -1.0;
-		av_turnaround_time = -1.0;
-		av_wait_time = 1.0;
+		calcStats();
 	}
 
 	void Stats::showAllProcessInfo() {
@@ -22,13 +20,19 @@
 	}
 
 	float Stats::get_av_response_time() {
-		return -1.0;
+		return av_response_time;
 	}
 
 	float Stats::get_av_turnaround_time() {
-		return -1.0;
+		return av_turnaround_time;
 	}
 
 	float Stats::get_av_wait_time() {
-		return -1.0;
+		return av_wait_time;
+	}
+
+	void Stats::calcStats() {
+		av_response_time = -1.0;
+		av_turnaround_time = -1.0;
+		av_wait_time = -1.0;
 	}
