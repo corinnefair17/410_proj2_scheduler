@@ -10,16 +10,24 @@
 
 	void Scheduler::add(PCB p) {
 		ready_q->push(p);
+		sort();
 	}
 
 	PCB Scheduler::getNext() {
-		return ready_q->front();
+		if(!isEmpty())
+		{
+			PCB p = ready_q->front();
+			ready_q->pop();
+			return p;
+		}
+		return PCB();
 	}
 
 	bool Scheduler::isEmpty() {
-		return ready_q->size() == 0;
+		return ready_q->empty();
 	}
 
 	bool Scheduler::time_to_switch_processes(int tick_count, PCB &p) {
-		return (&p.remaining_cpu_time <= 0 || (preemptive && tick_count > time_slice));
+		sort();
+		return (p.remaining_cpu_time <= 0 || (preemptive && (tick_count - p.start_time) >= time_slice));
 	}
