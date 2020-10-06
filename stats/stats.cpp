@@ -17,11 +17,6 @@
 		if (vec->size() <= 0) {
 			return;
 		}
-
-		for (unsigned int i = 0; i < vec->size(); i++) {
-			std::cout << "Process " << i << " Required CPU time: " << vec->at(i).required_cpu_time << " start time: "
-					<< vec->at(i).start_time << " finished: " << vec->at(i).finish_time << std::endl;
-		}
 	}
 
 	float Stats::get_av_response_time() {
@@ -46,11 +41,6 @@
 			total_response_times += (p.start_time - p.arrival_time);
 			total_turnaround_times += (p.finish_time - p.arrival_time);
 			total_wait_times += (p.finish_time - p.arrival_time - p.required_cpu_time);
-			//std::cout << total_response_times << std::endl;
-			//std::cout << ", " << std::endl;
-			//std::cout << total_turnaround_times << std::endl;
-			//std::cout << ", " << std::endl;
-			//std::cout << total_wait_times << std::endl;
 		}
 
 		av_response_time = total_response_times / vec->size();

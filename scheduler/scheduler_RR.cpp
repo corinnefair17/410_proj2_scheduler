@@ -14,7 +14,6 @@
 	bool Scheduler_RR::time_to_switch_processes(int tick_count, PCB &p)
 	{
 		sort();
-		//return Scheduler::time_to_switch_processes(tick_count, p);
 		return (p.remaining_cpu_time <= 0 || (p.required_cpu_time - p.remaining_cpu_time) % time_slice == 0);
 	}
 
